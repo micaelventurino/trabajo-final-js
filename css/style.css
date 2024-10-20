@@ -50,11 +50,16 @@ header{
 header nav{
   display: flex;
   justify-content: space-between;
-  margin: 0 60px;
+  margin: 0 60px
 }
 
 header nav img{
   height: 25px;
+}
+
+.logo{
+  width: 2.8rem; /* Ajusta según necesites */
+  height: 2.8rem;
 }
 
 #cuenta-carrito{
