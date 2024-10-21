@@ -1,11 +1,32 @@
 const cuentaCarritoElement = document.getElementById("cuenta-carrito");
 
-/** Toma un objeto producto o un objeto con al menos un ID y lo agrega al carrito */
+
 function agregarAlCarrito(producto){
-  //Reviso si el producto está en el carrito.
+
+  Toastify({
+    text: "Producto agregado",
+    duration: 3000,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #ee6130, #ee6130)",
+      borderRadius: "2rem",
+      textTransform: "uppercase",
+      fontSize: ".80rem"
+    },
+    offset: {
+        x: '2.5rem',
+        y: '2rem' 
+      },
+    onClick: function(){} // Callback after click
+  }).showToast();
+
+  //Revisar si el producto está en el carrito.
   let memoria = JSON.parse(localStorage.getItem("zapatillas"));
   let cantidadProductoFinal;
-  //Si no hay localstorage lo creo
+  
   if(!memoria || memoria.length === 0) {
     const nuevoProducto = getNuevoProductoParaMemoria(producto)
     localStorage.setItem("zapatillas",JSON.stringify([nuevoProducto]));
@@ -13,16 +34,16 @@ function agregarAlCarrito(producto){
     cantidadProductoFinal = 1;
   }
   else {
-    //Si hay localstorage me fijo si el artículo ya está ahí
+    
     const indiceProducto = memoria.findIndex(zapatilla => zapatilla.id === producto.id)
     const nuevaMemoria = memoria;
-    //Si el producto no está en el carrito lo agrego
+    
     if(indiceProducto === -1){
       const nuevoProducto = getNuevoProductoParaMemoria(producto);
       nuevaMemoria.push(nuevoProducto);
       cantidadProductoFinal = 1;
     } else {
-      //Si el producto está en el carrito le agrego 1 a la cantidad.
+      
       nuevaMemoria[indiceProducto].cantidad ++;
       cantidadProductoFinal = nuevaMemoria[indiceProducto].cantidad;
     }
@@ -32,7 +53,7 @@ function agregarAlCarrito(producto){
   }
 }
 
-/** Resta una unidad de un producto del carrito */
+/** Restar una unidad de un producto del carrito */
 function restarAlCarrito(producto){
   let memoria = JSON.parse(localStorage.getItem("zapatillas"));
   let cantidadProductoFinal = 0;
@@ -55,7 +76,7 @@ function getNuevoProductoParaMemoria(producto){
   return nuevoProducto;
 }
 
-/** Actualiza el número del carrito del header */
+/** Actualizar el número del carrito del header */
 function actualizarNumeroCarrito(){
   let cuenta = 0;
   const memoria = JSON.parse(localStorage.getItem("zapatillas"));
@@ -66,8 +87,18 @@ function actualizarNumeroCarrito(){
   cuentaCarritoElement.innerText = 0;
 }
 
-/** Reinicia el carrito */
+/** Reiniciar el carrito */
 function reiniciarCarrito(){
+
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Productos borrados!",
+    showConfirmButton: false,
+    timer: 2000
+  });
+
+
   localStorage.removeItem("zapatillas");
   actualizarNumeroCarrito();
 }

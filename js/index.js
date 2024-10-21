@@ -1,6 +1,17 @@
+let zapatillas = [];
+
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        zapatillas = data;
+        crearTarjetasProductosInicio(zapatillas);
+    })
+
 const contenedorTarjetas = document.getElementById("productos-container");
 
-/** Crea las tarjetas de productos teniendo en cuenta la lista en zapatillas.js */
+
+
+
 function crearTarjetasProductosInicio(productos){
   productos.forEach(producto => {
     const nuevaZapatilla = document.createElement("div");
@@ -14,4 +25,3 @@ function crearTarjetasProductosInicio(productos){
     nuevaZapatilla.getElementsByTagName("button")[0].addEventListener("click",() => agregarAlCarrito(producto))
   });
 }
-crearTarjetasProductosInicio(zapatillas);

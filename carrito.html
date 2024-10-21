@@ -4,11 +4,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 	<link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/carrito.css">
-  <script src="./js/zapatillas.js"></script>
-  <script src="./js/cartService.js" defer></script>
-	<script src="./js/carrito.js" defer></script>
+    <link rel="stylesheet" href="./css/carrito.css">
+  
+
 	<title>Carrito</title>
 </head>
 <body>
@@ -22,19 +24,26 @@
 		</div>
 	</nav>
 	</header>
+
 	<main>
 		<p id="carrito-vacio">El carrito está vacío! <a href="./index.html">Elegí algunos productos</a></p>
 		<section id="cart-container">
 		</section>
-  <section id="totales">
-    <p>Total unidades: <span id="cantidad">0</span></p>
-    <p>Total precio: $<span id="precio">0</span></p>
-    <button disabled>Comprar</button>
-    <button id="reiniciar">Reiniciar Carrito</button>
-  </section>
-</main>
+		<section id="totales">
+			<p>Total unidades: <span id="cantidad">0</span></p>
+			<p>Total precio: $<span id="precio">0</span></p>
+			<button disabled>Comprar</button>
+			<button id="reiniciar">Reiniciar Carrito</button>
+		</section>
+    </main>
+
 	<footer>
 		<p>Trabajo final JS</a></p>
 	</footer>
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="./js/cartService.js" defer></script>
+	<script src="./js/carrito.js" defer></script>
 </body>
 </html>
